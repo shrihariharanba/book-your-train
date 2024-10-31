@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "github.com/shrihariharanba/book-your-train/src/grpc_server/pb";
+
+
+message TrainDetails {
+    int32 train_id = 1;
+    string name = 2;
+    string from = 3;
+    string to = 4;
+    int32 cost = 5;
+    int32 available_seat_sectionA_count = 6;
+    int32 available_seat_secitonB_count = 7;
+    repeated int32 available_seat_sectionA = 8;
+    repeated int32 available_seat_sectionB = 9;
+}
+
+message TicketPurchaseDetails {
+    int32 train_id = 1;
+    string train_name = 2;
+    string from = 3;
+    string to = 4;
+    int32 noOfTicktes = 5;
+    repeated int32 sectionA_seat = 6;
+    repeated int32 sectionB_seat = 7;
+    int32 amount_paid = 8;
+    string first_name = 9;
+    string last_name = 10;
+    string email_id = 11;
+    
+}
+
+
+service TrainTicketingService {
+    rpc GetTrainDetails(TrainDetails) returns (TrainDetails) {}
+    rpc BookTrainTicket(TicketPurchaseDetails) returns (TicketPurchaseDetails) {}
+    rpc ModifyTrainSeat(TicketPurchaseDetails) returns (TicketPurchaseDetails) {}
+    rpc GetTicketPurchaseDetails(TicketPurchaseDetails) returns (TicketPurchaseDetails) {}
+    rpc DeleteTicketPurchaseDetails(TicketPurchaseDetails) returns (TicketPurchaseDetails){}
+}

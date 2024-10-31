@@ -1,0 +1,2 @@
+1.  To build and create the binaries please run the command make build-all in the project root folder, you will be finding london-express-server.exe and london-express-client.exe binaries will be created
+2.  Then first run the london-express-server.exe and then run the london-express-client.exe
